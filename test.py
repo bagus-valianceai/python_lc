@@ -1,32 +1,40 @@
-import datetime
+#function ini untuk menghitung volume kubus
+def menghitung_volume_kubus(r):
+    count_volume = r**3
 
-def is_prime(n):
-  if n <= 1:
-    return False
-  
-  for i in range(2, int(n**0.5) + 1):
-    if n % i == 0:
-      return False
-    
-  return True
+    return count_volume
 
-def is_prime_2(num):
-    if num < 2:
-        return False
-    
-    for i in range(2, int(num)):
-        timestamp = datetime.datetime.now()
-        print(timestamp)
+#function ini untuk menghitung volume balok
+def menghitung_volume_balok(panjang,lebar,tinggi):
+    count_volume = panjang*lebar*tinggi
 
-        if num % i == 0:
-            return False
-        
-        print(datetime.datetime.now() - timestamp)
-        
-    return True
+    return count_volume
 
 def main():
-    is_prime_2(10000000)
+    try:
+        nama_bangun_ruang = input("Masukan Nama Bangun Ruang: ")
+
+        if nama_bangun_ruang == "kubus":
+            r = int(input("Masukan nilai rusuk "))
+            print(menghitung_volume_kubus(r))
+
+        elif nama_bangun_ruang == "balok":
+            panjang = int(input("Masukan nilai panjang "))
+            lebar = int(input("Masukan nilai lebar ")) 
+            tinggi = int(input("Masukan nilai tinggi "))
+            print(menghitung_volume_balok(panjang, lebar, tinggi))
+
+        else:
+            raise Exception
+        
+    except ValueError:
+        print("Nilai bukan tipe data integer")
+
+    except Exception:
+        print("Terjadi kesalahan input nama bangun ruang")
+
+    finally:
+        print("Sekian dan terima kasih!")
 
 if __name__ == "__main__":
     main()
